@@ -12,4 +12,8 @@ React is all about "Components". Because all user interfaces in the end are made
     * Don't do too many things in one and the same place
 > Split big chunks of code into multiple smaller functions
 
+## JSX
+
+JSX stands for JavaScript XML. JSX is used to write HTML code inside the React component. There is rule in the react component that we have to return only single root element per return statement.
+
 

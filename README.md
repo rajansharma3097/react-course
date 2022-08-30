@@ -24,4 +24,6 @@ Props are basically used to pass data from one component to another.
 
 Generally using smaller blocks to create UI is known as Composition. Important part of composition is `props.children`.
 
+## State
 
+States are used to keep the data in the components and re-render the components whenever the state changes. useState() function must be called direatly inside the component, niether outside the component nor inside any component's function.

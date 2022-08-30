@@ -16,4 +16,12 @@ React is all about "Components". Because all user interfaces in the end are made
 
 JSX stands for JavaScript XML. JSX is used to write HTML code inside the React component. There is rule in the react component that we have to return only single root element per return statement.
 
+## Props
+
+Props are basically used to pass data from one component to another.
+
+## Composition
+
+Generally using smaller blocks to create UI is known as Composition. Important part of composition is `props.children`.
+
 

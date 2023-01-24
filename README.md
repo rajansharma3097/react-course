@@ -59,3 +59,64 @@ const myComp = (props) => {
 ```
 const node = myRef.current;
 ```
+
+## Effect / Side Effect
+
+Side effects could be anything else apart from the main job (Evalulate, Render and react to user input) of the React eg. send HTTP request to backend server, set & manage timers, store data in browser storage. These tasks must happen outside of the normal component evaluation and render cycle - especially since they might block/delay renderding (e.g. Http requests). Therefore we have special tool to handle side effect which is called ```useEffect()``` hook.
+
+```
+useEffect(() => { ... }, [dependencies]);
+```
+Here, a function that should be executed AFTER every component evaluation IF the specified dependencies changed. Dependencies of the effect - the function only runs if the dependencies changed.
+
+## useReducer
+
+The `useReducer` Hook is similar to the `useState` Hook. It allows for custom state logic. If you find yourself keeping track of multiple pieces of state that rely on complex logic, `useReducer` may be useful.
+
+```
+const [state, dispatchFn] = useReducer(reducerFn, initialState, initFn)
+```
+
+- state: The state snapshot used in the component re-render/re-evaluation cycle.
+- dispatchFn: A function that can be sed to dispatch a new action (i.e. trigger an update of the state)
+- reducerFn: A function that is triggered automatically once an action is dispatched (via dispatchFn()) - it receives the latest state snapshot and should return the new, updated state.
+- initialState: The initial state
+- initFn: A function to set the initial state programmtically.
+
+| useState() | useReducer() |
+| :---: | :---: |
+| The main state management "tool" | Great if you need "more power" |
+| Great for independent pieces of state/data | Should be considered if you have related pieces of state/data |
+| Great if state updates are easy and limited to a few kinds of updates | Can be helpful if you have more complex state updates. |
+
+## Context
+
+Context provides a way to pass data through the component tree without having to pass props down manually at every level. Context is designed to share data that can be considered “global” for a tree of React components, such as the current authenticated user, theme, or preferred language
+
+```
+const ThemeContext = React.createContext('light');
+
+const App = (props) => {
+    return (
+      <ThemeContext.Provider value="dark">
+        <Toolbar />
+      </ThemeContext.Provider>
+    );
+}
+
+const Toolbar = (props) => {
+
+    const theme = useContext(ThemeContext);
+    return (
+        return <Button theme={theme}/>
+    )
+}
+```
+
+NOTE: React Context is NOT optimized for high frequnecy changes. (alternative is REDUX)
+
+
+## Rules of Hooks
+
+- Only call React Hooks in React Functions. React Component Functions and Custom Hooks.
+- Only call React Hooks at the Top Level. Don't call them in nested function's and don't call them in any block statement.
